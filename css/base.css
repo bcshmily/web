@@ -1,0 +1,28 @@
+body {
+	/* 	background-color: #E7E7E7; */
+	font-family: "Arial", "SimSun", sans-serif;
+	font-size: 14pt;
+	/* line-height: 1.0; */
+	font-weight: normal;
+	color: #333 !important;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: 0px;
+}
+
+.dataTable {
+	color: blue;
+	border-collapse: collapse;
+}
+
+.dataTable td, .dataTable th {
+	border: 1px solid black;
+}
+
+.dataTable th {
+	background-color: #c0c0c0;
+}
+
+.dataTable td {
+	text-align: right;
+}
