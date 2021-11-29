@@ -1009,7 +1009,7 @@ function updateAreaChart() {
         lastSelectOutsideArea = $("#selAreaList").find("option:selected").val();
     }
     // 新型冠状病毒肺炎(省）
-    ajaxRequest("getVirusSubAreaData", {
+    ajaxRequest("getVirusSubAreaData/" + encodeURIComponent(inside_flg + "_" + $("#selAreaList").find("option:selected").val()) + ".json", {
         area: $("#selAreaList").find("option:selected").val(),
         limit: 30,
         inside: inside_flg,
