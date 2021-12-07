@@ -867,7 +867,7 @@ function resetStartTime(flg) {
                     chart.update();
                 }
             } else {
-                chart.options.scales.xAxes[0].ticks.min = "2020/06/01";
+                chart.options.scales.xAxes[0].ticks.min = "2021/09/01";
                 chart.update();
             }
         }
