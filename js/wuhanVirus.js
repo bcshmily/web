@@ -34,6 +34,18 @@ Chart.pluginService.register({
         ctx.restore();
     }
 });
+var defaultStartTime = "2021/01/01";
+
+function getGraphStartTime() {
+    if ($("#btn3MonthData").prop("disabled") === true) {
+        var date = new Date();
+        date.setMonth(date.getMonth() - 3);
+        var str = date.getFullYear() + "/" + (date.getMonth() + 1) + "/01";;
+        console.log(str);
+        return str;
+    }
+    return defaultStartTime;
+}
 
 function createWuhanGraph(id, graphInfo, graphType) {
     var chart = com_charts[id];
@@ -76,10 +88,8 @@ function createWuhanGraph(id, graphInfo, graphType) {
         };
         chartDataset.push(dataset);
     }
-    var startTime = graphInfo.startTime;
-    if ($("#btn3MonthData").prop("disabled") == false) {
-
-    }
+    defaultStartTime = graphInfo.startTime;
+    var startTime = getGraphStartTime();    
     var config = {
         lastUpdateTime: graphInfo.lastUpdateTime,
         type: 'line',
@@ -843,17 +853,17 @@ $(document).ready(function() {
 
     // all_data_flg
     $("#btnAllData").click(function() {
-        $("#btnAllData").prop("disabled", true);
-        $("#btn3MonthData").prop("disabled", false);
         //		all_data_flg = "1";
         //		updateChart(true);
+        $("#btnAllData").prop("disabled", true);
+        $("#btn3MonthData").prop("disabled", false);
         resetStartTime("1");
     });
     $("#btn3MonthData").click(function() {
-        $("#btnAllData").prop("disabled", false);
-        $("#btn3MonthData").prop("disabled", true);
         //		all_data_flg = "0";
         //		updateChart(true);
+        $("#btnAllData").prop("disabled", false);
+        $("#btn3MonthData").prop("disabled", true);
         resetStartTime("0");
     });
 });
@@ -867,7 +877,7 @@ function resetStartTime(flg) {
                     chart.update();
                 }
             } else {
-                chart.options.scales.xAxes[0].ticks.min = "2021/09/01";
+                chart.options.scales.xAxes[0].ticks.min = getGraphStartTime();
                 chart.update();
             }
         }
